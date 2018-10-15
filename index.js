@@ -24,7 +24,7 @@ function defaultSetSession(sessionId) {
 }
 
 // 有效HTTP方法列表
-const methods = ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD', 'TRACE', 'CONNECT'];
+const methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS', 'HEAD', 'TRACE', 'CONNECT'];
 
 /**
  * 创建API Request客户端
@@ -59,7 +59,7 @@ export function create(options) {
 
     let url = apiRoot + apiName;
 
-    if (['POST', 'PUT'].indexOf(method) === -1 && data) {
+    if (['POST', 'PUT', 'PATCH'].indexOf(method) === -1 && data) {
       let querystring = stringify(data);
       if (url.indexOf('?') > -1) {
         url += '&' + querystring;
